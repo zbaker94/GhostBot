@@ -192,7 +192,12 @@ function getRandomAwakeMsg(){
     var textArray = [
         'I Have RISEN',
         'Guess Boo-s back',
-        "So glad to be here. I've been dying to see you",
+        "So glad to be here. I've been dying to see you!",
+        'Hey o_o/',
+        'Is it just me or did a chill run up your spine?',
+        'I Boo-lieve in miracles',
+        'Goooooood Mourning',
+        'im a ghost'
 
     ];
     var randomNumber = Math.floor(Math.random()*textArray.length);
