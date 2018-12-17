@@ -19,6 +19,7 @@ bot.once('ready', () => {
     horizontalRule();
     console.log(ghostimage);
     console.log('GhostBot is Ready!');
+    bot.channels.get(defaultChannel).send(getRandomAwakeMsg());
     horizontalRule();
    });
 
@@ -95,7 +96,7 @@ bot.on('presenceUpdate', function(oldMember, newMember){
         }
 
             if(result === ''){
-              newMember.user.send('Normally I would show you a snazzy report of people that have seen your messages but there is nothing to Show! Everyone is all caught up.')
+                newMember.user.send('Normally I would show you a snazzy report of people that have seen your messages but there is nothing to Show! Everyone is all caught up.')
             }else{
                 newMember.user.send("Hello! Here is a list of all the users that were active since you sent your last message: ");
                 newMember.user.send(result);
@@ -185,4 +186,16 @@ function horizontalRule(){
 //TODO: Implement
 function getLastActiveTime(name){
 
+}
+
+function getRandomAwakeMsg(){
+    var textArray = [
+        'I Have RISEN',
+        'Guess Boo-s back',
+        "So glad to be here. I've been dying to see you",
+
+    ];
+    var randomNumber = Math.floor(Math.random()*textArray.length);
+
+    return textArray[randomNumber];
 }
