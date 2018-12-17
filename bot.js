@@ -151,6 +151,13 @@ function handleCommand(msg){
                 msg.channel.send('NOOOOOOOOOOOOOooooooooo.... ' + msg.author.username + ' Has escaped my clutches!');
                 msg.author.send("I'll get you next time...");
             break;
+            //TODO: Implement
+            //!find
+                //case 'find' :
+                //if(args[0]){
+                //    found = serverUsers.get(args[0]);
+                //    console.log('I found ' + args[0] + '. They were last active ' + getLastActiveTime(name));
+               // }
 }
 }
 
@@ -174,4 +181,8 @@ function refreshUsers(){
 
 function horizontalRule(){
     console.log('-----------------------------------------------');
+}
+//TODO: Implement
+function getLastActiveTime(name){
+
 }
