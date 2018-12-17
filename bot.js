@@ -58,42 +58,44 @@ bot.on('presenceUpdate', function(oldMember, newMember){
             console.log('Sending report to ' + newMember.user.username)
             var result = '';
             for (const [key, value] of serverUsers.entries()) {
-                var one_day_ms=1000*60*60*24;
-                var one_hour_ms = 1000*60*60;
-                var one_minute_ms = 1000*60;
+                if(key !== newMember.user.username){
+                    var one_day_ms=1000*60*60*24;
+                    var one_hour_ms = 1000*60*60;
+                    var one_minute_ms = 1000*60;
 
-                var messageDate_ms = newMember.user.lastMessage.createdAt.getTime();
-                var userLogoffDate_ms = value.getTime();
-                var now_ms = new Date().getTime();
+                    var messageDate_ms = newMember.user.lastMessage.createdAt.getTime();
+                    var userLogoffDate_ms = value.getTime();
+                    var now_ms = new Date().getTime();
 
-                var timeDiff = userLogoffDate_ms - messageDate_ms;
+                    var timeDiff = userLogoffDate_ms - messageDate_ms;
 
-                if(timeDiff > 0){
-                    //they saw your message
-                    var lastSeenDays = Math.round((now_ms - userLogoffDate_ms)/one_day_ms);
-                    var lastSeenHours = Math.round((now_ms - userLogoffDate_ms)/one_hour_ms);
-                    var lastSeenMinutes = Math.round((now_ms-userLogoffDate_ms)/one_minute_ms);
+                    if(timeDiff > 0){
+                        //they saw your message
+                        var lastSeenDays = Math.round((now_ms - userLogoffDate_ms)/one_day_ms);
+                        var lastSeenHours = Math.round((now_ms - userLogoffDate_ms)/one_hour_ms);
+                        var lastSeenMinutes = Math.round((now_ms-userLogoffDate_ms)/one_minute_ms);
 
-                    var lastSeen = ' Seconds';
-                    if (lastSeenDays === 0){
-                        if(lastSeenHours === 0){
-                            if(lastSeenMinutes === 0){
-                                lastSeen = ' Seconds';
+                        var lastSeen = ' Seconds';
+                        if (lastSeenDays === 0){
+                            if(lastSeenHours === 0){
+                                if(lastSeenMinutes === 0){
+                                    lastSeen = ' Seconds';
+                                }else{
+                                lastSeen = lastSeenMinutes + ' Minutes';
+                                }
                             }else{
-                            lastSeen = lastSeenMinutes + ' Minutes';
+                                lastSeen = lastSeenHours + ' Hours';
                             }
                         }else{
-                            lastSeen = lastSeenHours + ' Hours';
+                            lastSeenDays + ' Days';
                         }
-                    }else{
-                        lastSeenDays + ' Days';
+                        result += '| Name: ' + key + ' | Last Seen: ~' + lastSeen + ' ago' + ' |\n'
                     }
-                    result += '| Name: ' + key + ' | Last Seen: ~' + lastSeen + ' ago' + ' |\n'
-                }
             }
+        }
 
             if(result === ''){
-              newMember.user.send('Normally I would show you a snazzy report of people that have seen your messages but there is nothing to Show! Everyone is all caught up!')
+              newMember.user.send('Normally I would show you a snazzy report of people that have seen your messages but there is nothing to Show! Everyone is all caught up.')
             }else{
                 newMember.user.send("Hello! Here is a list of all the users that were active since you sent your last message: ");
                 newMember.user.send(result);
@@ -125,8 +127,8 @@ function handleCommand(msg){
                 msg.channel.send('OoooOOooo I am now haunting ' + msg.author.username)
                 msg.author.send('BOO! You will now get a report when you come online of all users that saw your most recent message while you were away.');
             break;
-            //!ghostGetLocalUsersList
-                case 'ghostGetLocalUsersList' :
+            //!whoisinthehouse
+                case 'whoisinthehouse' :
                 
                 let results =''
                 for (const [key, value] of serverUsers.entries()) {
