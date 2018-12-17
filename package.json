@@ -1,0 +1,11 @@
+{
+    "name": "Ghost-Bot",
+    "version": "1.0.0",
+    "description": "Spooooooooky",
+    "main": "bot.js",
+    "author": "Zack Baker",
+    "dependencies": {
+        "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+        "discord.js": "^11.4.2"
+    }
+}
