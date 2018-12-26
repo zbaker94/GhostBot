@@ -2,7 +2,7 @@ var Discord = require('discord.js');
 var auth = require('./auth.json');
 var Package = require('./package.json');
 //Initialize Bot Vars
-const defaultChannel = '523918772185333785';
+const defaultChannel = '508759068068937729';
 const commandToken = '!';
 let serverUsers = new Map();
 let adminUsers = [];
@@ -16,6 +16,7 @@ var bot = new Discord.Client({
 
 //start up
 bot.once('ready', () => {
+
     horizontalRule();
     console.log(ghostimage);
     console.log('GhostBot is Ready!');
@@ -25,9 +26,11 @@ bot.once('ready', () => {
 
 bot.on('ready', ()=>{
     refreshUsers();
-})
+});
 
 bot.login(auth.token);
+
+
 
  //Accept Commands
  bot.on('message', function (message) {
@@ -128,8 +131,8 @@ function handleCommand(msg){
                 msg.channel.send('OoooOOooo I am now haunting ' + msg.author.username)
                 msg.author.send('BOO! You will now get a report when you come online of all users that saw your most recent message while you were away.');
             break;
-            //!whoisinthehouse
-                case 'whoisinthehouse' :
+            //!whoisaboard
+                case 'whoisaboard' :
                 
                 let results =''
                 for (const [key, value] of serverUsers.entries()) {
@@ -140,7 +143,7 @@ function handleCommand(msg){
                 if(results === ''){
                     results = 'Hmmm... There do not seem to be any users. You must have logged in while I was asleep! Try again and I will add you :)';
                 }else{
-                    msg.channel.send('Here are the current local users: ');
+                    msg.channel.send('Yarrrrg Here are the current local users: ');
                 }
                     console.log('Results: ' + results);
                     horizontalRule();
@@ -151,6 +154,10 @@ function handleCommand(msg){
                 adminUsers.splice(adminUsers.indexOf(msg.author.username));
                 msg.channel.send('NOOOOOOOOOOOOOooooooooo.... ' + msg.author.username + ' Has escaped my clutches!');
                 msg.author.send("I'll get you next time...");
+            break;
+            //!whoareyou
+                case 'whoareyou' :
+                msg.channel.send("I was unobservant and let a stranger on the boat so Captain Moonlight killed me. Live and learn I guess. It was definately all my fault. Anyways, I am here haunting your server to let anyone who is registered with the '!haunt' command know who has seen their last message. Yup, that's it.");
             break;
             //TODO: Implement
             //!find
