@@ -1,1 +1,2 @@
 # GhostBot
+Test push permissions
