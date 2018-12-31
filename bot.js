@@ -99,6 +99,7 @@ bot.on('presenceUpdate', function(oldMember, newMember){
             }
         }
             console.log('done with report, checking results');
+
             if(result === ''){
                 newMember.user.send('Normally I would show you a snazzy report of people that have seen your messages but there is nothing to Show! Everyone is all caught up.')
             }else{
@@ -106,7 +107,6 @@ bot.on('presenceUpdate', function(oldMember, newMember){
                 newMember.user.send(result);
             }
             
-            newMember.user.send();
         }else{
             console.log('User not Admin');
             console.log('Admin Users: ' + adminUsers);
