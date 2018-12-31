@@ -205,7 +205,8 @@ function getRandomAwakeMsg(){
         'Is it just me or did a chill run up your spine?',
         'I Boo-lieve in miracles',
         'Goooooood Mourning',
-        'im a ghost'
+        'im a ghost',
+        '*Now it is the time of night\nThat the graves, all gaping wide,\nEvery one lets forth his sprite\nIn the church-way paths to glide.*'
 
     ];
     var randomNumber = Math.floor(Math.random()*textArray.length);
