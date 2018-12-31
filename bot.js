@@ -61,12 +61,13 @@ bot.on('presenceUpdate', function(oldMember, newMember){
             console.log('User is admin');
             console.log('Sending report to ' + newMember.user.username)
             var result = '';
+            var one_day_ms=1000*60*60*24;
+            var one_hour_ms = 1000*60*60;
+            var one_minute_ms = 1000*60;
+
             for (const [key, value] of serverUsers.entries()) {
                 if(key !== newMember.user.username){
-                    var one_day_ms=1000*60*60*24;
-                    var one_hour_ms = 1000*60*60;
-                    var one_minute_ms = 1000*60;
-
+                    
                     var messageDate_ms = newMember.user.lastMessage.createdAt.getTime();
                     var userLogoffDate_ms = value.getTime();
                     var now_ms = new Date().getTime();
@@ -97,7 +98,7 @@ bot.on('presenceUpdate', function(oldMember, newMember){
                     }
             }
         }
-
+            console.log('done with report, checking results');
             if(result === ''){
                 newMember.user.send('Normally I would show you a snazzy report of people that have seen your messages but there is nothing to Show! Everyone is all caught up.')
             }else{
